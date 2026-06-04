@@ -1,22 +1,34 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResumeController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::view('/', 'welcome')->name('home');
 
-Route::get('/', function () {
-    return view('welcome');
+// Páginas públicas (link compartilhável + impressão/PDF) — sem login
+Route::get('/r/{resume}', [ResumeController::class, 'show'])->name('resumes.show');
+Route::get('/r/{resume}/print', [ResumeController::class, 'print'])->name('resumes.print');
+
+// Área autenticada
+Route::middleware('auth')->group(function () {
+    // após o login o Breeze envia para "dashboard"
+    Route::get('/dashboard', fn () => redirect()->route('resumes.index'))->name('dashboard');
+
+    // Builder (criar / editar)
+    Route::get('/builder', [ResumeController::class, 'create'])->name('resumes.create');
+    Route::get('/builder/{resume}', [ResumeController::class, 'edit'])->name('resumes.edit');
+
+    // CRUD dos currículos do usuário
+    Route::get('/resumes', [ResumeController::class, 'index'])->name('resumes.index');
+    Route::post('/resumes', [ResumeController::class, 'store'])->name('resumes.store');
+    Route::put('/resumes/{resume}', [ResumeController::class, 'update'])->name('resumes.update');
+    Route::delete('/resumes/{resume}', [ResumeController::class, 'destroy'])->name('resumes.destroy');
+
+    // Perfil (Breeze)
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/resume', function () {
-    return view('resume');
-});
+require __DIR__.'/auth.php';

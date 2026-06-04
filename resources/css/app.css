@@ -1,0 +1,505 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Alpine: esconde elementos até o componente inicializar */
+[x-cloak] {
+    display: none !important;
+}
+
+/* ==========================================================================
+   Documento do currículo (.cv)
+   Estilos próprios, em CSS puro, para manter fidelidade na tela, na
+   impressão e na exportação para PDF. Não é afetado pelo dark mode da app.
+   ========================================================================== */
+
+.cv {
+    --cv-accent: #4f46e5;
+    --cv-text: #1f2937;
+    --cv-muted: #6b7280;
+    --cv-line: #e5e7eb;
+
+    background: #ffffff;
+    color: var(--cv-text);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 13px;
+    line-height: 1.55;
+    width: 100%;
+    max-width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 18mm 16mm;
+}
+
+.cv * {
+    box-sizing: border-box;
+}
+
+.cv__header {
+    margin-bottom: 1.25rem;
+}
+
+.cv__name {
+    font-size: 1.9rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--cv-text);
+    margin: 0;
+}
+
+.cv__role {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cv-accent);
+    margin: 0.15rem 0 0;
+}
+
+.cv__contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    margin-top: 0.6rem;
+    font-size: 0.8rem;
+    color: var(--cv-muted);
+}
+
+.cv__contacts a {
+    color: var(--cv-muted);
+    text-decoration: none;
+}
+
+.cv__contacts a:hover {
+    color: var(--cv-accent);
+}
+
+.cv__section {
+    margin-top: 1.35rem;
+}
+
+.cv__section-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--cv-accent);
+    border-bottom: 2px solid var(--cv-line);
+    padding-bottom: 0.3rem;
+    margin: 0 0 0.7rem;
+}
+
+.cv__summary {
+    white-space: pre-wrap;
+    color: var(--cv-text);
+}
+
+.cv__item {
+    margin-bottom: 0.9rem;
+}
+
+.cv__item:last-child {
+    margin-bottom: 0;
+}
+
+.cv__item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.cv__item-title {
+    font-weight: 700;
+    color: var(--cv-text);
+}
+
+.cv__item-sub {
+    font-weight: 500;
+    color: var(--cv-accent);
+}
+
+.cv__item-period {
+    flex: none;
+    font-size: 0.75rem;
+    color: var(--cv-muted);
+    white-space: nowrap;
+}
+
+.cv__item-desc {
+    margin-top: 0.2rem;
+    white-space: pre-wrap;
+    color: #374151;
+}
+
+.cv__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.cv__chip {
+    background: #eef2ff;
+    color: #4338ca;
+    border-radius: 999px;
+    padding: 0.18rem 0.7rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+.cv__langs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1.5rem;
+}
+
+.cv__lang {
+    font-size: 0.85rem;
+}
+
+.cv__lang .lvl {
+    color: var(--cv-muted);
+}
+
+.cv__link {
+    color: var(--cv-accent);
+    text-decoration: none;
+    font-size: 0.78rem;
+}
+
+.cv__empty {
+    color: #9ca3af;
+    font-style: italic;
+}
+
+/* --- Tema: Clássico (serifado, cabeçalho centralizado) --------------------- */
+.cv--classic {
+    --cv-accent: #1f2937;
+    font-family: 'Source Serif 4', Georgia, serif;
+}
+
+.cv--classic .cv__header {
+    text-align: center;
+    border-bottom: 3px double var(--cv-line);
+    padding-bottom: 1rem;
+}
+
+.cv--classic .cv__contacts {
+    justify-content: center;
+}
+
+.cv--classic .cv__role {
+    color: #4b5563;
+}
+
+.cv--classic .cv__section-title {
+    text-align: center;
+    border-bottom: none;
+    border-top: 1px solid var(--cv-line);
+    padding-top: 0.4rem;
+}
+
+.cv--classic .cv__chip {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+/* --- Tema: Compacto (denso, ideal para 1 página) -------------------------- */
+.cv--compact {
+    --cv-accent: #0f766e;
+    font-size: 12px;
+    padding: 12mm 12mm;
+}
+
+.cv--compact .cv__name {
+    font-size: 1.5rem;
+}
+
+.cv--compact .cv__section {
+    margin-top: 0.9rem;
+}
+
+.cv--compact .cv__item {
+    margin-bottom: 0.55rem;
+}
+
+.cv--compact .cv__chip {
+    background: #ccfbf1;
+    color: #115e59;
+}
+
+/* --- Tema: Minimalista (sem foto) ----------------------------------------- */
+.cv--minimal {
+    --cv-accent: #111827;
+}
+
+.cv--minimal .cv__role {
+    color: #6b7280;
+}
+
+.cv--minimal .cv__section-title {
+    color: #111827;
+    border-bottom: none;
+    letter-spacing: 0.2em;
+    font-size: 0.68rem;
+}
+
+.cv--minimal .cv__chip {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+/* --- Tema: Técnico (sem foto, cara de dev) -------------------------------- */
+.cv--technical {
+    --cv-accent: #059669;
+}
+
+.cv--technical .cv__name {
+    font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+
+.cv--technical .cv__section-title {
+    font-family: ui-monospace, "SFMono-Regular", Menlo, monospace;
+    text-transform: lowercase;
+    letter-spacing: 0;
+    border-bottom: 1px dashed var(--cv-line);
+}
+
+.cv--technical .cv__section-title::before {
+    content: '# ';
+    color: var(--cv-accent);
+}
+
+.cv--technical .cv__chip {
+    background: #ecfdf5;
+    color: #065f46;
+    border-radius: 4px;
+}
+
+/* ==========================================================================
+   Foto de perfil + templates COM foto
+   ========================================================================== */
+.cv__photo {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 50%;
+    flex: none;
+}
+
+/* --- Tema: Sidebar (faixa de cor com foto à esquerda) --------------------- */
+.cv--sidebar {
+    --cv-accent: #4f46e5;
+}
+
+.cv--sidebar.cv--has-photo .cv__header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1.3rem;
+    align-items: center;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #ffffff;
+    margin: -18mm -16mm 1.4rem;
+    padding: 1.6rem 16mm;
+}
+
+.cv--sidebar.cv--has-photo .cv__photo {
+    grid-row: 1 / span 3;
+    border: 3px solid rgba(255, 255, 255, 0.65);
+}
+
+.cv--sidebar.cv--has-photo .cv__name,
+.cv--sidebar.cv--has-photo .cv__role,
+.cv--sidebar.cv--has-photo .cv__contacts,
+.cv--sidebar.cv--has-photo .cv__contacts a {
+    grid-column: 2;
+    color: #ffffff;
+}
+
+.cv--sidebar.cv--has-photo .cv__role {
+    color: #e0e7ff;
+}
+
+/* --- Tema: Banner (faixa larga, foto à direita) --------------------------- */
+.cv--banner {
+    --cv-accent: #0891b2;
+}
+
+.cv--banner.cv--has-photo .cv__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 1.3rem;
+    align-items: center;
+    background: #0f172a;
+    color: #ffffff;
+    margin: -18mm -16mm 1.4rem;
+    padding: 1.7rem 16mm;
+    border-bottom: 4px solid var(--cv-accent);
+}
+
+.cv--banner.cv--has-photo .cv__photo {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    border-radius: 10px;
+    border: 2px solid var(--cv-accent);
+}
+
+.cv--banner.cv--has-photo .cv__name {
+    color: #ffffff;
+}
+
+.cv--banner.cv--has-photo .cv__role {
+    color: #67e8f9;
+}
+
+.cv--banner.cv--has-photo .cv__contacts,
+.cv--banner.cv--has-photo .cv__contacts a {
+    color: #cbd5e1;
+}
+
+.cv--banner .cv__chip {
+    background: #cffafe;
+    color: #155e75;
+}
+
+/* --- Tema: Elegante (serifado, foto centralizada) ------------------------- */
+.cv--elegant {
+    --cv-accent: #9a7b4f;
+    font-family: 'Source Serif 4', Georgia, serif;
+}
+
+.cv--elegant .cv__header {
+    text-align: center;
+}
+
+.cv--elegant.cv--has-photo .cv__photo {
+    display: block;
+    margin: 0 auto 0.7rem;
+    width: 108px;
+    height: 108px;
+    border: 2px solid var(--cv-accent);
+}
+
+.cv--elegant .cv__contacts {
+    justify-content: center;
+}
+
+.cv--elegant .cv__section-title {
+    text-align: center;
+    border-bottom: none;
+    border-top: 1px solid var(--cv-line);
+    padding-top: 0.45rem;
+}
+
+.cv--elegant .cv__chip {
+    background: #f5f0e8;
+    color: #6b5836;
+}
+
+/* --- Tema: Cartão (foto quadrada arredondada) ----------------------------- */
+.cv--card {
+    --cv-accent: #0ea5e9;
+}
+
+.cv--card.cv--has-photo .cv__header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1.3rem;
+    align-items: center;
+}
+
+.cv--card.cv--has-photo .cv__photo {
+    grid-row: 1 / span 3;
+    width: 92px;
+    height: 92px;
+    border-radius: 14px;
+}
+
+.cv--card.cv--has-photo .cv__name,
+.cv--card.cv--has-photo .cv__role,
+.cv--card.cv--has-photo .cv__contacts {
+    grid-column: 2;
+}
+
+.cv--card .cv__section-title {
+    color: #0369a1;
+    border-bottom-color: #bae6fd;
+}
+
+.cv--card .cv__chip {
+    background: #e0f2fe;
+    color: #075985;
+}
+
+/* --- Tema: Corporativo (foto à direita, navy) ----------------------------- */
+.cv--corporate {
+    --cv-accent: #1e3a8a;
+}
+
+.cv--corporate.cv--has-photo .cv__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 1.3rem;
+    align-items: center;
+    border-bottom: 3px solid var(--cv-accent);
+    padding-bottom: 1rem;
+}
+
+.cv--corporate.cv--has-photo .cv__photo {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    width: 90px;
+    height: 90px;
+    border-radius: 8px;
+}
+
+.cv--corporate.cv--has-photo .cv__name,
+.cv--corporate.cv--has-photo .cv__role,
+.cv--corporate.cv--has-photo .cv__contacts {
+    grid-column: 1;
+}
+
+.cv--corporate .cv__section-title {
+    color: #1e3a8a;
+    border-bottom-color: #1e3a8a;
+}
+
+.cv--corporate .cv__chip {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+/* ==========================================================================
+   Tela / sombra do "papel" e impressão
+   ========================================================================== */
+.cv-paper {
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    body {
+        background: #ffffff !important;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+    .cv-paper {
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .cv {
+        max-width: none;
+        margin: 0;
+        min-height: auto;
+    }
+}
