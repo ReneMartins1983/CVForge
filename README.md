@@ -10,14 +10,14 @@
 
 O **CVForge** é uma aplicação web onde a pessoa cria uma conta, monta seu currículo
 em um editor com **pré-visualização ao vivo** e publica em um **link compartilhável**.
-São **10 modelos** (com e sem foto), modo escuro e exportação para PDF.
+São **11 modelos** (com e sem foto), modo escuro e exportação para PDF.
 
 ## ✨ Funcionalidades
 
 - 🔐 **Contas de usuário** — cada pessoa gerencia seus próprios currículos.
 - ⚡ **Editor com prévia ao vivo** — o currículo é montado enquanto você digita.
 - 🧩 **Seções completas** — dados pessoais, resumo, experiência, formação, habilidades, projetos e idiomas (todas repetíveis).
-- 🎨 **10 modelos** — 5 sem foto (Moderno, Clássico, Compacto, Minimalista, Técnico) e 5 com foto (Sidebar, Banner, Elegante, Cartão, Corporativo).
+- 🎨 **11 modelos** — 6 sem foto (Moderno, Clássico, Compacto, Minimalista, Técnico, Executivo) e 5 com foto (Sidebar, Banner, Elegante, Cartão, Corporativo).
 - 🖼️ **Upload de foto de perfil** nos modelos que a utilizam.
 - 🔗 **Link público compartilhável** (`/r/{slug}`) para enviar a recrutadores.
 - 📄 **Exportação em PDF / impressão** com layout A4 dedicado.

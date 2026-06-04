@@ -11,7 +11,7 @@
 
     <div class="mx-auto max-w-6xl px-4 py-20 text-center sm:py-28">
         <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-600 shadow-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
-            🚀 Laravel 12 · Tailwind · Alpine.js
+            ✨ Grátis · 11 modelos · pronto em minutos
         </span>
         <h1 class="mx-auto mt-6 max-w-3xl text-4xl font-extrabold tracking-tight sm:text-5xl">
             Crie um currículo de dev <span class="text-brand-600 dark:text-brand-400">profissional</span> em minutos
@@ -39,7 +39,7 @@
         @php
             $features = [
                 ['⚡', 'Prévia ao vivo', 'Veja o currículo sendo montado enquanto você digita, sem recarregar a página.'],
-                ['🎨', '3 temas', 'Moderno, clássico e compacto — troque o visual com um clique.'],
+                ['🎨', '11 modelos', 'Com e sem foto — troque o visual com um clique e veja na hora.'],
                 ['🌙', 'Modo escuro', 'Interface confortável de dia ou de noite, do seu jeito.'],
                 ['🔗', 'Link compartilhável', 'Cada currículo ganha um link público para enviar a recrutadores.'],
                 ['📄', 'Export em PDF', 'Gere um PDF pronto para imprimir, com layout A4 caprichado.'],
