@@ -470,6 +470,88 @@
 }
 
 /* ==========================================================================
+   Barras de destaque (topo/rodapé) e divisores coloridos por modelo
+   ========================================================================== */
+.cv {
+    position: relative;
+}
+
+/* Barra superior colorida */
+.cv--modern::before,
+.cv--compact::before,
+.cv--technical::before,
+.cv--card::before,
+.cv--corporate::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 7px;
+    background: var(--cv-accent);
+}
+
+/* Minimalista: barra fina, discreta */
+.cv--minimal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--cv-accent);
+}
+
+/* Elegante: barra superior em degradê dourado */
+.cv--elegant::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 7px;
+    background: linear-gradient(90deg, #9a7b4f, #d8c08a, #9a7b4f);
+}
+
+/* Barra inferior em modelos selecionados */
+.cv--modern::after,
+.cv--corporate::after,
+.cv--card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 7px;
+    background: var(--cv-accent);
+}
+
+/* Divisores de seção coloridos (acento) */
+.cv--modern .cv__section-title,
+.cv--card .cv__section-title {
+    border-bottom-color: var(--cv-accent);
+}
+
+/* Compacto: divisor lateral colorido em vez de sublinhado */
+.cv--compact .cv__section-title {
+    border-bottom: none;
+    border-left: 3px solid var(--cv-accent);
+    padding-left: 0.55rem;
+    padding-bottom: 0;
+}
+
+/* Minimalista: filete curto de acento sob o nome */
+.cv--minimal .cv__header {
+    border-bottom: none;
+}
+
+.cv--minimal .cv__name {
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--cv-accent);
+    display: inline-block;
+}
+
+/* ==========================================================================
    Tela / sombra do "papel" e impressão
    ========================================================================== */
 .cv-paper {
