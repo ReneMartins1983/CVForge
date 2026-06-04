@@ -1,7 +1,8 @@
 @php
     $d = $resume->data ?? [];
     $p = $d['personal'] ?? [];
-    $showPhoto = $resume->usesPhoto() && $resume->photoUrl();
+    $photoSrc = ($photoOverride ?? null) ?: $resume->photoUrl();
+    $showPhoto = $resume->usesPhoto() && $photoSrc;
     $contacts = collect([
         $p['email'] ?? null,
         $p['phone'] ?? null,
@@ -15,7 +16,7 @@
 <article class="cv cv--{{ $resume->template }}{{ $showPhoto ? ' cv--has-photo' : '' }}">
     <header class="cv__header">
         @if ($showPhoto)
-            <img src="{{ $resume->photoUrl() }}" class="cv__photo" alt="Foto de {{ $p['name'] ?? '' }}">
+            <img src="{{ $photoSrc }}" class="cv__photo" alt="Foto de {{ $p['name'] ?? '' }}">
         @endif
         <h1 class="cv__name">{{ $p['name'] ?? 'Sem nome' }}</h1>
         @if (!empty($p['title']))

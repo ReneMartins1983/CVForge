@@ -31,6 +31,37 @@
     min-height: 297mm;
     margin: 0 auto;
     padding: 18mm 16mm;
+    /* garante que textos longos/sem espaços quebrem em vez de vazar */
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* ==========================================================================
+   Prévia ao vivo escalada para o tamanho real (A4)
+   ========================================================================== */
+.preview-frame {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.preview-page {
+    width: 794px; /* largura A4 a 96dpi */
+    transform-origin: top left;
+}
+
+/* Miniatura de modelo na galeria pública */
+.cv-thumb {
+    width: 270px;
+    height: 360px;
+    overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.25);
+}
+
+.cv-thumb__page {
+    zoom: 0.34;
 }
 
 .cv * {

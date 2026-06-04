@@ -19,6 +19,56 @@ class ResumeController extends Controller
         return view('resumes.index', compact('resumes'));
     }
 
+    /** Galeria pública dos modelos disponíveis (não exige login). */
+    public function gallery(): View
+    {
+        $sample = $this->sampleData();
+
+        $samples = collect(Resume::TEMPLATES)->map(function ($meta, $key) use ($sample) {
+            return new Resume([
+                'slug' => $key,
+                'title' => $meta['label'],
+                'template' => $key,
+                'data' => $sample,
+            ]);
+        });
+
+        return view('templates', ['samples' => $samples]);
+    }
+
+    /** Dados fictícios usados na galeria de modelos. */
+    private function sampleData(): array
+    {
+        return [
+            'personal' => [
+                'name' => 'Ana Martins',
+                'title' => 'Desenvolvedora Full Stack',
+                'email' => 'ana@exemplo.dev',
+                'phone' => '+55 (11) 90000-0000',
+                'location' => 'São Paulo, Brasil',
+                'website' => 'ana.dev',
+                'linkedin' => 'linkedin.com/in/ana',
+                'github' => 'github.com/ana',
+                'summary' => 'Desenvolvedora com 6 anos de experiência em aplicações web modernas, APIs e bancos de dados.',
+            ],
+            'experiences' => [
+                ['role' => 'Desenvolvedora Sênior', 'company' => 'TechFarm', 'start' => '2021', 'end' => 'Atual', 'description' => 'Liderança técnica e arquitetura de serviços.'],
+                ['role' => 'Desenvolvedora', 'company' => 'Startup XYZ', 'start' => '2018', 'end' => '2021', 'description' => 'Produto SaaS do zero.'],
+            ],
+            'education' => [
+                ['degree' => 'Ciência da Computação', 'institution' => 'USP', 'start' => '2014', 'end' => '2018', 'description' => ''],
+            ],
+            'skills' => ['PHP', 'Laravel', 'JavaScript', 'MySQL', 'Docker', 'Tailwind'],
+            'projects' => [
+                ['name' => 'Projeto Exemplo', 'link' => 'github.com/ana/projeto', 'description' => 'Aplicação open-source.'],
+            ],
+            'languages' => [
+                ['name' => 'Português', 'level' => 'Nativo'],
+                ['name' => 'Inglês', 'level' => 'Avançado'],
+            ],
+        ];
+    }
+
     /** Formulário de criação (builder vazio). */
     public function create(): View
     {

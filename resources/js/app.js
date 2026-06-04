@@ -71,6 +71,9 @@ Alpine.data('builder', (initial = {}) => ({
         if (this.$refs.photoInput) this.$refs.photoInput.value = '';
     },
 
+    // escala da prévia para refletir o tamanho A4 real dentro do painel
+    previewZoom: 1,
+
     init() {
         // garante que todas as coleções existam mesmo em currículos antigos
         const base = emptyResume();
@@ -78,6 +81,21 @@ Alpine.data('builder', (initial = {}) => ({
             if (this.resume[key] === undefined) this.resume[key] = base[key];
         }
         this.resume.personal = { ...base.personal, ...this.resume.personal };
+
+        // ajusta a escala da prévia (largura A4 = 794px) ao tamanho do painel
+        this.$nextTick(() => {
+            const frame = this.$refs.previewFrame;
+            if (!frame) return;
+            const fit = () => {
+                this.previewZoom = Math.min(1, frame.clientWidth / 794);
+            };
+            fit();
+            if (window.ResizeObserver) {
+                new ResizeObserver(fit).observe(frame);
+            } else {
+                window.addEventListener('resize', fit);
+            }
+        });
     },
 
     // Experiências

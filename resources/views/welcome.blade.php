@@ -21,13 +21,13 @@
             e compartilhe por link ou exporte em PDF. Simples assim.
         </p>
         <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href="{{ route('resumes.create') }}"
+            <a href="{{ auth()->check() ? route('resumes.create') : route('register') }}"
                class="rounded-xl bg-brand-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-brand-600/20 transition hover:bg-brand-700">
                 Criar meu currículo
             </a>
-            <a href="{{ route('resumes.index') }}"
+            <a href="{{ route('templates') }}"
                class="rounded-xl border border-slate-300 bg-white px-6 py-3 text-base font-semibold text-slate-700 transition hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800">
-                Ver currículos
+                Ver modelos
             </a>
         </div>
     </div>

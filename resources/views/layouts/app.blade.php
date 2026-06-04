@@ -26,10 +26,14 @@
                 </a>
 
                 <div class="flex items-center gap-1 sm:gap-2">
+                    <a href="{{ route('templates') }}"
+                       class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
+                        Modelos
+                    </a>
                     @auth
                         <a href="{{ route('resumes.index') }}"
                            class="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">
-                            Currículos
+                            Meus currículos
                         </a>
                         <a href="{{ route('resumes.create') }}"
                            class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700">

@@ -242,8 +242,10 @@
 
         {{-- ============================= PREVIEW ============================= --}}
         <div class="lg:sticky lg:top-[120px] lg:h-[calc(100vh-140px)] lg:overflow-y-auto">
-            <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Prévia ao vivo</p>
-            <div class="cv-paper">
+            <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Prévia ao vivo <span class="normal-case text-slate-300">(tamanho A4 real)</span></p>
+            <div class="preview-frame" x-ref="previewFrame">
+              <div class="preview-page" :style="`zoom:${previewZoom}`">
+                <div class="cv-paper">
                 <article :class="'cv cv--' + template + (usesPhoto && shownPhoto ? ' cv--has-photo' : '')">
                     <header class="cv__header">
                         <template x-if="usesPhoto && shownPhoto">
@@ -333,6 +335,8 @@
                         </div>
                     </section>
                 </article>
+                </div>
+              </div>
             </div>
         </div>
     </div>
