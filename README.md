@@ -8,6 +8,8 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC?logo=tailwindcss&logoColor=white)
 ![Tests](https://img.shields.io/badge/tests-36%20passing-success)
 
+🌐 **Demo:** _(em breve)_ · guia de publicação em [`docs/DEPLOY-RENDER.md`](docs/DEPLOY-RENDER.md)
+
 O **CVForge** é uma aplicação web onde a pessoa cria uma conta, monta seu currículo
 em um editor com **pré-visualização ao vivo** e publica em um **link compartilhável**.
 São **11 modelos** (com e sem foto), modo escuro e exportação para PDF.

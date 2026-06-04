@@ -1,0 +1,24 @@
+# Blueprint do Render — cria a demo a partir do repositório.
+# No Render: New + > Blueprint > selecione este repositório.
+services:
+  - type: web
+    name: cvforge
+    runtime: docker
+    dockerfilePath: ./Dockerfile.render
+    plan: free
+    region: oregon
+    envVars:
+      # Definido manualmente no painel (não fica no repositório)
+      - key: APP_KEY
+        sync: false
+      # Defina com a URL pública do serviço após o 1º deploy (ex.: https://cvforge.onrender.com)
+      - key: APP_URL
+        sync: false
+      - key: APP_NAME
+        value: CVForge
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: false
+      - key: APP_LOCALE
+        value: pt_BR
