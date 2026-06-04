@@ -500,6 +500,119 @@
     color: #1e40af;
 }
 
+/* --- Tema: Executivo (cabeçalho escuro + faixa "wave" + colunas) ---------- */
+.cv--executive {
+    --cv-accent: #008080;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0 0 16mm 0;
+}
+
+.cv--executive .cv__header {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+/* contatos como barra escura no topo */
+.cv--executive .cv__contacts {
+    order: 1;
+    background: #3d454c;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 0;
+    padding: 2rem 1.2rem 1.3rem;
+    font-size: 0.8rem;
+}
+
+.cv--executive .cv__contacts span {
+    position: relative;
+    padding: 0 0.9rem;
+}
+
+.cv--executive .cv__contacts span:not(:last-child)::after {
+    content: '|';
+    position: absolute;
+    right: -2px;
+    color: #83b8b8;
+    font-weight: bold;
+}
+
+/* faixa em degradê (wave) entre os contatos e o nome */
+.cv--executive .cv__header::before {
+    content: '';
+    order: 2;
+    display: block;
+    height: 42px;
+    background: linear-gradient(
+        174deg,
+        #3d454c 45%,
+        #008080 46%,
+        #008080 72%,
+        #83b8b8 73%,
+        #83b8b8 88%,
+        #ffffff 89%
+    );
+}
+
+.cv--executive .cv__name {
+    order: 3;
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0;
+    color: #333d47;
+    padding: 0.8rem 14mm 0;
+}
+
+.cv--executive .cv__role {
+    order: 4;
+    color: #777777;
+    font-weight: 400;
+    padding: 0 14mm;
+    margin-top: 0.15rem;
+}
+
+/* seções em duas colunas: rótulo à esquerda, conteúdo à direita */
+.cv--executive .cv__section {
+    display: grid;
+    grid-template-columns: 25% 1fr;
+    gap: 0 1rem;
+    border-top: 1px solid #008080;
+    margin: 1rem 14mm 0;
+    padding-top: 0.9rem;
+}
+
+.cv--executive .cv__section-title {
+    grid-column: 1;
+    border: none;
+    margin: 0;
+    padding: 0;
+    color: #333d47;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.cv--executive .cv__section-body {
+    grid-column: 2;
+}
+
+.cv--executive .cv__item-title {
+    color: #333d47;
+}
+
+.cv--executive .cv__item-sub {
+    color: #777777;
+}
+
+.cv--executive .cv__chip {
+    background: #d6ecec;
+    color: #00696e;
+}
+
 /* ==========================================================================
    Barras de destaque (topo/rodapé) e divisores coloridos por modelo
    ========================================================================== */

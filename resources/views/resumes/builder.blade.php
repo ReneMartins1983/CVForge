@@ -265,73 +265,85 @@
 
                     <section class="cv__section" x-show="resume.personal.summary">
                         <h2 class="cv__section-title">Resumo</h2>
-                        <p class="cv__summary" x-text="resume.personal.summary"></p>
+                        <div class="cv__section-body">
+                            <p class="cv__summary" x-text="resume.personal.summary"></p>
+                        </div>
                     </section>
 
                     <section class="cv__section" x-show="resume.experiences.length">
                         <h2 class="cv__section-title">Experiência</h2>
-                        <template x-for="(exp, i) in resume.experiences" :key="i">
-                            <div class="cv__item">
-                                <div class="cv__item-head">
-                                    <div>
-                                        <span class="cv__item-title" x-text="exp.role"></span>
-                                        <span class="cv__item-sub" x-show="exp.company" x-text="'· ' + exp.company"></span>
+                        <div class="cv__section-body">
+                            <template x-for="(exp, i) in resume.experiences" :key="i">
+                                <div class="cv__item">
+                                    <div class="cv__item-head">
+                                        <div>
+                                            <span class="cv__item-title" x-text="exp.role"></span>
+                                            <span class="cv__item-sub" x-show="exp.company" x-text="'· ' + exp.company"></span>
+                                        </div>
+                                        <span class="cv__item-period" x-show="exp.start || exp.end"
+                                              x-text="[exp.start, exp.end].filter(Boolean).join(' — ')"></span>
                                     </div>
-                                    <span class="cv__item-period" x-show="exp.start || exp.end"
-                                          x-text="[exp.start, exp.end].filter(Boolean).join(' — ')"></span>
+                                    <p class="cv__item-desc" x-show="exp.description" x-text="exp.description"></p>
                                 </div>
-                                <p class="cv__item-desc" x-show="exp.description" x-text="exp.description"></p>
-                            </div>
-                        </template>
+                            </template>
+                        </div>
                     </section>
 
                     <section class="cv__section" x-show="resume.education.length">
                         <h2 class="cv__section-title">Formação</h2>
-                        <template x-for="(edu, i) in resume.education" :key="i">
-                            <div class="cv__item">
-                                <div class="cv__item-head">
-                                    <div>
-                                        <span class="cv__item-title" x-text="edu.degree"></span>
-                                        <span class="cv__item-sub" x-show="edu.institution" x-text="'· ' + edu.institution"></span>
+                        <div class="cv__section-body">
+                            <template x-for="(edu, i) in resume.education" :key="i">
+                                <div class="cv__item">
+                                    <div class="cv__item-head">
+                                        <div>
+                                            <span class="cv__item-title" x-text="edu.degree"></span>
+                                            <span class="cv__item-sub" x-show="edu.institution" x-text="'· ' + edu.institution"></span>
+                                        </div>
+                                        <span class="cv__item-period" x-show="edu.start || edu.end"
+                                              x-text="[edu.start, edu.end].filter(Boolean).join(' — ')"></span>
                                     </div>
-                                    <span class="cv__item-period" x-show="edu.start || edu.end"
-                                          x-text="[edu.start, edu.end].filter(Boolean).join(' — ')"></span>
+                                    <p class="cv__item-desc" x-show="edu.description" x-text="edu.description"></p>
                                 </div>
-                                <p class="cv__item-desc" x-show="edu.description" x-text="edu.description"></p>
-                            </div>
-                        </template>
+                            </template>
+                        </div>
                     </section>
 
                     <section class="cv__section" x-show="resume.projects.length">
                         <h2 class="cv__section-title">Projetos</h2>
-                        <template x-for="(proj, i) in resume.projects" :key="i">
-                            <div class="cv__item">
-                                <div class="cv__item-head">
-                                    <span class="cv__item-title" x-text="proj.name"></span>
+                        <div class="cv__section-body">
+                            <template x-for="(proj, i) in resume.projects" :key="i">
+                                <div class="cv__item">
+                                    <div class="cv__item-head">
+                                        <span class="cv__item-title" x-text="proj.name"></span>
+                                    </div>
+                                    <a class="cv__link" x-show="proj.link" x-text="proj.link" href="#"></a>
+                                    <p class="cv__item-desc" x-show="proj.description" x-text="proj.description"></p>
                                 </div>
-                                <a class="cv__link" x-show="proj.link" x-text="proj.link" href="#"></a>
-                                <p class="cv__item-desc" x-show="proj.description" x-text="proj.description"></p>
-                            </div>
-                        </template>
+                            </template>
+                        </div>
                     </section>
 
                     <section class="cv__section" x-show="resume.skills.length">
                         <h2 class="cv__section-title">Habilidades</h2>
-                        <div class="cv__chips">
-                            <template x-for="(skill, i) in resume.skills" :key="i">
-                                <span class="cv__chip" x-text="skill"></span>
-                            </template>
+                        <div class="cv__section-body">
+                            <div class="cv__chips">
+                                <template x-for="(skill, i) in resume.skills" :key="i">
+                                    <span class="cv__chip" x-text="skill"></span>
+                                </template>
+                            </div>
                         </div>
                     </section>
 
                     <section class="cv__section" x-show="resume.languages.length">
                         <h2 class="cv__section-title">Idiomas</h2>
-                        <div class="cv__langs">
-                            <template x-for="(lang, i) in resume.languages" :key="i">
-                                <div class="cv__lang">
-                                    <span x-text="lang.name"></span><span class="lvl" x-show="lang.level" x-text="' · ' + lang.level"></span>
-                                </div>
-                            </template>
+                        <div class="cv__section-body">
+                            <div class="cv__langs">
+                                <template x-for="(lang, i) in resume.languages" :key="i">
+                                    <div class="cv__lang">
+                                        <span x-text="lang.name"></span><span class="lvl" x-show="lang.level" x-text="' · ' + lang.level"></span>
+                                    </div>
+                                </template>
+                            </div>
                         </div>
                     </section>
                 </article>

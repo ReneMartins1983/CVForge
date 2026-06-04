@@ -23,6 +23,7 @@ class Resume extends Model
         'compact' => ['label' => 'Compacto', 'photo' => false],
         'minimal' => ['label' => 'Minimalista', 'photo' => false],
         'technical' => ['label' => 'Técnico', 'photo' => false],
+        'executive' => ['label' => 'Executivo', 'photo' => false],
         // com foto
         'sidebar' => ['label' => 'Sidebar', 'photo' => true],
         'banner' => ['label' => 'Banner', 'photo' => true],
