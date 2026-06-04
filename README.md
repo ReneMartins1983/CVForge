@@ -6,7 +6,7 @@
 ![PHP](https://img.shields.io/badge/PHP-8.3-777BB4?logo=php&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-8.4-4479A1?logo=mysql&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC?logo=tailwindcss&logoColor=white)
-![Tests](https://img.shields.io/badge/tests-36%20passing-success)
+[![CI](https://github.com/ReneMartins1983/CVForge/actions/workflows/ci.yml/badge.svg)](https://github.com/ReneMartins1983/CVForge/actions/workflows/ci.yml)
 
 🌐 **Demo:** _(em breve)_ · guia de publicação em [`docs/DEPLOY-RENDER.md`](docs/DEPLOY-RENDER.md)
 
