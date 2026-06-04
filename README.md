@@ -12,6 +12,16 @@ O **CVForge** é uma aplicação web onde a pessoa cria uma conta, monta seu cur
 em um editor com **pré-visualização ao vivo** e publica em um **link compartilhável**.
 São **11 modelos** (com e sem foto), modo escuro e exportação para PDF.
 
+## 📸 Telas
+
+| Início | Galeria de modelos |
+| --- | --- |
+| ![Landing](docs/screenshots/landing.png) | ![Galeria de modelos](docs/screenshots/gallery.png) |
+
+| Modelo Moderno | Modelo Executivo |
+| --- | --- |
+| ![Modelo moderno](docs/screenshots/resume-modern.png) | ![Modelo executivo](docs/screenshots/resume-executive.png) |
+
 ## ✨ Funcionalidades
 
 - 🔐 **Contas de usuário** — cada pessoa gerencia seus próprios currículos.
