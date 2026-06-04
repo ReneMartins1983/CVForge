@@ -31,7 +31,7 @@ class ResumeTest extends TestCase
 
     public function test_landing_page_loads(): void
     {
-        $this->get('/')->assertOk()->assertSee('Devfolio');
+        $this->get('/')->assertOk()->assertSee('CVForge');
     }
 
     public function test_builder_requires_authentication(): void

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $resume->title }} — Devfolio</title>
+    <title>{{ $resume->title }} — CVForge</title>
     @vite(['resources/css/app.css'])
 </head>
 <body class="bg-slate-200 py-8">

@@ -1,3 +1,5 @@
+name: cvforge
+
 services:
   # Aplicação Laravel (PHP 8.3-FPM)
   app:
@@ -7,7 +9,7 @@ services:
       args:
         UID: ${UID:-1000}
         GID: ${GID:-1000}
-    container_name: devfolio-app
+    container_name: cvforge-app
     restart: unless-stopped
     working_dir: /var/www
     volumes:
@@ -16,12 +18,12 @@ services:
       mysql:
         condition: service_healthy
     networks:
-      - devfolio
+      - cvforge
 
   # Servidor web
   nginx:
     image: nginx:1.27-alpine
-    container_name: devfolio-nginx
+    container_name: cvforge-nginx
     restart: unless-stopped
     ports:
       - "${APP_PORT:-8000}:80"
@@ -31,18 +33,18 @@ services:
     depends_on:
       - app
     networks:
-      - devfolio
+      - cvforge
 
   # Banco de dados MySQL 8.4
   mysql:
     image: mysql:8.4
-    container_name: devfolio-mysql
+    container_name: cvforge-mysql
     restart: unless-stopped
     ports:
       - "${FORWARD_DB_PORT:-33060}:3306"
     environment:
-      MYSQL_DATABASE: ${DB_DATABASE:-devfolio}
-      MYSQL_USER: ${DB_USERNAME:-devfolio}
+      MYSQL_DATABASE: ${DB_DATABASE:-cvforge}
+      MYSQL_USER: ${DB_USERNAME:-cvforge}
       MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-secret}
     volumes:
@@ -53,26 +55,26 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - devfolio
+      - cvforge
 
   # Node 20 para build de assets (Vite). Uso sob demanda:
   #   docker compose run --rm node npm install
   #   docker compose run --rm node npm run dev
   node:
     image: node:20-alpine
-    container_name: devfolio-node
+    container_name: cvforge-node
     working_dir: /var/www
     volumes:
       - ./:/var/www
     ports:
       - "${VITE_PORT:-5173}:5173"
     networks:
-      - devfolio
+      - cvforge
     profiles:
       - tools
 
 networks:
-  devfolio:
+  cvforge:
     driver: bridge
 
 volumes:

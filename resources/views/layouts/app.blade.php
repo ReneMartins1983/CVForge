@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Devfolio') — Gerador de currículos</title>
+    <title>@yield('title', 'CVForge') — Gerador de currículos</title>
 
     {{-- Aplica o tema salvo antes da renderização para evitar flash --}}
     <script>
@@ -21,8 +21,8 @@
         <header class="sticky top-0 z-30 border-b border-slate-200 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-900/80">
             <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
                 <a href="{{ route('home') }}" class="flex items-center gap-2 text-lg font-extrabold tracking-tight">
-                    <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white">D</span>
-                    <span>Dev<span class="text-brand-600 dark:text-brand-400">folio</span></span>
+                    <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-600 text-white">C</span>
+                    <span>CV<span class="text-brand-600 dark:text-brand-400">Forge</span></span>
                 </a>
 
                 <div class="flex items-center gap-1 sm:gap-2">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Devfolio')
+@section('title', 'CVForge')
 
 @section('content')
 {{-- Hero --}}

@@ -1,9 +1,9 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "rene/devfolio",
+    "name": "rene/cvforge",
     "type": "project",
-    "description": "Devfolio — gerador de currículos para desenvolvedores.",
-    "keywords": ["laravel", "framework", "devfolio", "resume"],
+    "description": "CVForge — gerador de currículos para desenvolvedores.",
+    "keywords": ["laravel", "framework", "cvforge", "resume"],
     "license": "MIT",
     "require": {
         "php": "^8.3",

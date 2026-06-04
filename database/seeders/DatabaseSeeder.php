@@ -56,8 +56,8 @@ class DatabaseSeeder extends Seeder
                 'skills' => ['PHP', 'Laravel', 'MySQL', 'Docker', 'Redis', 'PHPUnit', 'JavaScript', 'Tailwind CSS', 'Git'],
                 'projects' => [
                     [
-                        'name' => 'Devfolio',
-                        'link' => 'github.com/anasouza/devfolio',
+                        'name' => 'CVForge',
+                        'link' => 'github.com/anasouza/cvforge',
                         'description' => 'Gerador de currículos open-source em Laravel 12.',
                     ],
                 ],

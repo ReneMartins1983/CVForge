@@ -1,103 +1,101 @@
-# Devfolio
+# CVForge
 
-Gerador de currículos para desenvolvedores. Preencha seus dados e veja o
-currículo sendo montado em tempo real, escolha um tema, salve e compartilhe
-por link ou exporte em PDF.
+> Gerador de currículos para desenvolvedores — monte, pré-visualize em tempo real, escolha um modelo e compartilhe por link ou PDF.
 
-## Funcionalidades
+![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?logo=laravel&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-8.3-777BB4?logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8.4-4479A1?logo=mysql&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC?logo=tailwindcss&logoColor=white)
+![Tests](https://img.shields.io/badge/tests-36%20passing-success)
 
-- **Contas de usuário** (Laravel Breeze) — cada pessoa tem seus próprios currículos; o link público continua aberto.
-- **Builder com prévia ao vivo** (Alpine.js) — o currículo é montado enquanto você digita.
-- **Seções completas** — dados pessoais, resumo, experiência, formação, habilidades, projetos e idiomas (todos repetíveis).
-- **10 modelos** — 5 sem foto (moderno, clássico, compacto, minimalista, técnico) e 5 com foto (sidebar, banner, elegante, cartão, corporativo).
-- **Upload de foto de perfil** para os modelos que a usam.
-- **Modo escuro** persistido no navegador.
-- **Persistência em MySQL** com link público compartilhável (`/r/{slug}`).
-- **Export em PDF / impressão** com layout A4 dedicado.
+O **CVForge** é uma aplicação web onde a pessoa cria uma conta, monta seu currículo
+em um editor com **pré-visualização ao vivo** e publica em um **link compartilhável**.
+São **10 modelos** (com e sem foto), modo escuro e exportação para PDF.
 
-## Stack
+## ✨ Funcionalidades
 
-| Componente        | Versão                                            |
-| ----------------- | ------------------------------------------------- |
-| Laravel Framework | 12.x (constraint `^12.0`)                         |
-| PHP               | 8.3 (`^8.3`) — imagem base `php:8.3-fpm-bookworm` |
-| MySQL             | 8.4                                               |
-| Composer          | 2.9                                               |
-| Node.js           | 20.x                                              |
-| Vite              | 6.x                                               |
+- 🔐 **Contas de usuário** — cada pessoa gerencia seus próprios currículos.
+- ⚡ **Editor com prévia ao vivo** — o currículo é montado enquanto você digita.
+- 🧩 **Seções completas** — dados pessoais, resumo, experiência, formação, habilidades, projetos e idiomas (todas repetíveis).
+- 🎨 **10 modelos** — 5 sem foto (Moderno, Clássico, Compacto, Minimalista, Técnico) e 5 com foto (Sidebar, Banner, Elegante, Cartão, Corporativo).
+- 🖼️ **Upload de foto de perfil** nos modelos que a utilizam.
+- 🔗 **Link público compartilhável** (`/r/{slug}`) para enviar a recrutadores.
+- 📄 **Exportação em PDF / impressão** com layout A4 dedicado.
+- 🌙 **Modo escuro** persistido no navegador.
 
-Todo o ambiente roda em containers Docker — não é necessário instalar PHP,
-MySQL ou Composer no host.
+## 🛠️ Stack
 
-## Como rodar
+| Camada      | Tecnologia                                   |
+| ----------- | -------------------------------------------- |
+| Backend     | Laravel 12 · PHP 8.3                          |
+| Banco       | MySQL 8.4                                     |
+| Frontend    | Blade · Tailwind CSS 3 · Alpine.js · Vite     |
+| Auth        | Laravel Breeze                                |
+| Ambiente    | Docker (PHP-FPM, Nginx, MySQL, Node 20)       |
+| Testes      | PHPUnit (36 testes)                           |
 
-Pré-requisitos: Docker e Docker Compose.
+## 🏗️ Arquitetura
+
+- **Currículos** são guardados com os dados em uma coluna **JSON** e um **slug** curto para o link público.
+- O **documento do currículo** (`.cv`) tem CSS próprio (independente do Tailwind), garantindo fidelidade idêntica na **tela, na impressão e no PDF**.
+- A **interface** (editor, navegação, modo escuro) usa Tailwind; a reatividade do editor é feita com **Alpine.js** sem necessidade de SPA.
+- **Posse** é garantida no servidor: só o dono edita/remove; o link público continua aberto a todos.
+
+## 🚀 Como rodar
+
+Pré-requisitos: **Docker** e **Docker Compose**.
 
 ```bash
-# 1. Configurar o ambiente
+# 1. Ambiente
 cp .env.example .env
 
-# 2. Subir a imagem da aplicação (PHP 8.3 + Composer 2.9)
+# 2. Subir a imagem da aplicação (PHP 8.3 + Composer)
 UID=$(id -u) GID=$(id -g) docker compose build app
 
-# 3. Instalar dependências PHP
+# 3. Dependências PHP
 docker compose run --rm app composer install
 
 # 4. Subir a stack (app + nginx + mysql)
 docker compose up -d
 
-# 5. Gerar a APP_KEY e rodar as migrations
+# 5. Chave, banco e dados de exemplo
 docker compose exec app php artisan key:generate
-docker compose exec app php artisan migrate
+docker compose exec app php artisan migrate --seed
+docker compose exec app php artisan storage:link
 
-# 6. Instalar e compilar os assets (Node 20 / Vite)
+# 6. Assets (Node 20 / Vite)
 docker compose run --rm node npm install
 docker compose run --rm node npm run build
 ```
 
-A aplicação fica disponível em **http://localhost:8000**.
+Acesse **http://localhost:8000**. Crie sua conta em `/register` e comece em `/builder`.
+Há um currículo de exemplo público em **`/r/exemplo1`**.
 
 ### Rotas
 
-| Rota                   | Acesso  | Descrição                            |
-| ---------------------- | ------- | ------------------------------------ |
-| `/`                    | público | Landing page                         |
-| `/login`, `/register`  | público | Autenticação (Laravel Breeze)        |
-| `/builder`             | logado  | Criar um currículo                   |
-| `/builder/{slug}`      | dono    | Editar um currículo                  |
-| `/resumes`             | logado  | Seus currículos                      |
-| `/profile`             | logado  | Perfil do usuário                    |
-| `/r/{slug}`            | público | Página pública (link compartilhável) |
-| `/r/{slug}/print`      | público | Versão para impressão / PDF          |
-| `/up`                  | público | Health check                         |
+| Rota                  | Acesso  | Descrição                            |
+| --------------------- | ------- | ------------------------------------ |
+| `/`                   | público | Landing page                         |
+| `/login`, `/register` | público | Autenticação                         |
+| `/builder`            | logado  | Criar um currículo                   |
+| `/builder/{slug}`     | dono    | Editar um currículo                  |
+| `/resumes`            | logado  | Seus currículos                      |
+| `/profile`            | logado  | Perfil do usuário                    |
+| `/r/{slug}`           | público | Página pública (link compartilhável) |
+| `/r/{slug}/print`     | público | Versão para impressão / PDF          |
 
-Há um currículo de exemplo semeado em `/r/exemplo1` (rode `php artisan db:seed`).
-
-### Stack de frontend
-
-Blade + **Tailwind CSS 3** (dark mode via classe) + **Alpine.js 3**, compilado
-com Vite. O documento do currículo usa CSS próprio (`.cv`) para garantir
-fidelidade na tela, na impressão e no PDF.
-
-### Desenvolvimento de assets (hot reload)
-
-```bash
-docker compose run --rm --service-ports node npm run dev
-```
-
-### Testes
+## 🧪 Testes
 
 ```bash
 docker compose exec app php artisan test
 ```
 
-## Portas
+## 📦 Banco de dados
 
-| Serviço | Host    | Container |
-| ------- | ------- | --------- |
-| nginx   | `8000`  | `80`      |
-| MySQL   | `33060` | `3306`    |
-| Vite    | `5173`  | `5173`    |
+O schema é versionado em **migrations** e os dados de exemplo em um **seeder** —
+não há dump `.sql`: `php artisan migrate --seed` recria tudo. Em produção o MySQL
+roda como serviço Docker com volume persistente.
 
-As portas do host podem ser ajustadas via `.env` (`APP_PORT`, `FORWARD_DB_PORT`,
-`VITE_PORT`).
+## 📄 Licença
+
+MIT.
