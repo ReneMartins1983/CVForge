@@ -7,8 +7,11 @@
 ![MySQL](https://img.shields.io/badge/MySQL-8.4-4479A1?logo=mysql&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC?logo=tailwindcss&logoColor=white)
 [![CI](https://github.com/ReneMartins1983/CVForge/actions/workflows/ci.yml/badge.svg)](https://github.com/ReneMartins1983/CVForge/actions/workflows/ci.yml)
+[![Demo](https://img.shields.io/badge/demo-online-success)](https://cvforge-zv12.onrender.com)
 
-🌐 **Demo:** _(em breve)_ · guia de publicação em [`docs/DEPLOY-RENDER.md`](docs/DEPLOY-RENDER.md)
+🌐 **Demo ao vivo:** **<https://cvforge-zv12.onrender.com>** · guia de publicação em [`docs/DEPLOY-RENDER.md`](docs/DEPLOY-RENDER.md)
+
+> A demo roda no plano gratuito do Render: o primeiro acesso após inatividade pode levar ~30–50s para "acordar".
 
 O **CVForge** é uma aplicação web onde a pessoa cria uma conta, monta seu currículo
 em um editor com **pré-visualização ao vivo** e publica em um **link compartilhável**.
