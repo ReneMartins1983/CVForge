@@ -11,7 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        // Render (e outros PaaS) terminam o TLS no proxy e encaminham via HTTP;
+        // confiar no proxy faz o Laravel detectar o HTTPS e gerar URLs corretas.
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
