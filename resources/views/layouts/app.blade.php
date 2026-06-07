@@ -6,6 +6,15 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'CVForge') — Gerador de currículos</title>
 
+    {{-- Open Graph / prévia em redes sociais --}}
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CVForge">
+    <meta property="og:title" content="CVForge — Gerador de currículos">
+    <meta property="og:description" content="Crie um currículo de dev profissional em minutos: 11 modelos, prévia ao vivo e exportação em PDF.">
+    <meta property="og:image" content="{{ url('/og-image.png') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta name="twitter:card" content="summary_large_image">
+
     {{-- Aplica o tema salvo antes da renderização para evitar flash --}}
     <script>
         if (localStorage.getItem('theme') === 'dark' ||
